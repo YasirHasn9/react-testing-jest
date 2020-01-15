@@ -1,12 +1,20 @@
-import React from 'react';
-import './App.css';
+import React, { useState } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-    <h1>testing the snapshot/jest</h1>
-    </div>
-  );
-}
+   const App = () => {
+     const [message, setMessage] = useState('');
 
-export default App;
+     const fakeApiCall = () => new Promise.resolve('Success!')
+
+     const onClickHandler = () => {
+       fakeApiCall().then(res => setMessage(res));
+     }
+
+       return (
+         <div>
+           <span>{message}</span>
+           <button onClick={onClickHandler}>
+             Get message!
+           </button>
+         </div>
+       );
+   }
