@@ -1,15 +1,22 @@
-// get the the file that we wish to be tested
-// require method is a pure js .
-const help = require("./wait");
-// when we use require with inside the () the path of wanted file
+import wait from "./wait"
 
-describe("Mocks function", () => {
-  it("test isItEven", () => {
-    const spy = jest.fn();
-    // spy is another way of mock that allows us spy on the behavior of a function
-    // that is called by other code , this so powerful way because imagine if
-    // we have a function that give a random outputs every times been called
-    help.isItEven(2, spy);
-    expect(spy).toBeCalledWith(2);
-  });
-});
+
+// test is global that comes from jest.
+// test("wait for promised to be resolved" , async () => {
+//   const res = await wait(3)
+//   return expect(res).toBe("hurray")
+// })
+
+// test("wait for promised to be resolved", done => {
+//   // since it a promise so we can use then 
+//   wait(3).then(res => {
+//     expect(res).toBe("hurray")
+//     done()
+//   })
+// })
+
+test("wait for promised to be resolved",() => {
+  // here jest says okey since we are waiting for something tio be 
+  // resolved so lets wait for the promise to finished.
+  return wait(3).then(res => expect(res).toBe("hurray"))
+})
