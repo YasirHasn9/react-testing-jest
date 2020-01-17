@@ -7,7 +7,6 @@ import {useLocalStorge} from "./utlis/input"
      const [count , setCount] = useLocalStorge("count" , 6)
 
      const [images ] = useDogImages(breed,count)
-     console.log("rwfww", images)
 
 
        return (
